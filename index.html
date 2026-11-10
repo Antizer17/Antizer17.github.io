@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Sameer – Full-Stack Developer</title>
+  
+  <!-- Google Fonts: Tech Engineer Scheme -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Anti-FOUC (Flash of Unstyled Color Theme) Script -->
+  <script>
+    (function() {
+      var savedTheme = null;
+      try {
+        savedTheme = localStorage.getItem('theme');
+      } catch (e) {}
+      if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+        savedTheme = 'light';
+      }
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
+    })();
+  </script>
+
+  <!-- External JavaScript (deferred execution after DOM loads) -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <!-- =======================================================================
+       HEADER & HERO SECTION
+       ======================================================================= -->
+  <div class="wrap">
+    <!-- Top Navigation Bar -->
+    <nav>
+      <a class="brand" href="#top">Sameer</a>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#certificates">Certificates</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="mode" id="mode" type="button" aria-label="Switch to light mode">
+        <i></i>
+      </button>
+    </nav>
+
+    <!-- Hero Introduction -->
+    <header class="hero" id="top">
+      <div class="hero-text">
+        <h1>Building SaaS products powered by robust backends and AI systems.</h1>
+        <p>Computer science student at BRAC University in Dhaka with a deep passion for designing APIs, implementing data models and pipelines, and AI integration. When I am not teaching, I am building and shipping my own SaaS products.</p>
+        <div class="actions">
+          <a class="btn" href="#projects">See my projects</a>
+          <button class="btn ghost open-email-btn" type="button">Get in touch</button>
+        </div>
+      </div>
+      <div class="photo">
+        <img src="./160.jpg" alt="Portrait photo of Sameer" />
+      </div>
+    </header>
+  </div>
+
+  <!-- =======================================================================
+       MAIN CONTENT
+       ======================================================================= -->
+  <main>
+    <!-- About & Skills Matrix -->
+    <div class="wrap">
+      <section id="about" class="about">
+        <h2>About</h2>
+        <div>
+          <p>I’m finishing my CS degree and looking for my first full-stack role. Years of teaching taught me to explain things clearly, and I try to write code and interfaces the same way.</p>
+          <p>Outside code, I’m planning a master’s degree abroad.</p>
+
+          <!-- Dedicated Tools & Technologies Subsection -->
+          <div class="tools-section">
+            <h3>Tools & Technologies</h3>
+            <div class="tools-grid">
+              
+              <!-- Category 1: Languages -->
+              <div class="tool-group">
+                <span class="tool-cat-title">Languages</span>
+                <div class="stack">
+                  <span>JavaScript (ES6+)</span>
+                  <span>Python</span>
+                  <span>C / C++</span>
+                  <span>SQL</span>
+                  <span>HTML5 / CSS3</span>
+                </div>
+              </div>
+
+              <!-- Category 2: Frameworks & Backend -->
+              <div class="tool-group">
+                <span class="tool-cat-title">Frameworks & Backend</span>
+                <div class="stack">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>Express</span>
+                  <span>Next.js</span>
+                  <span>RESTful APIs</span>
+                </div>
+              </div>
+
+              <!-- Category 3: Databases & Tools -->
+              <div class="tool-group">
+                <span class="tool-cat-title">Databases & Tools</span>
+                <div class="stack">
+                  <span>PostgreSQL</span>
+                  <span>MongoDB</span>
+                  <span>Git & GitHub</span>
+                  <span>Postman</span>
+                  <span>Linux / CLI</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Projects Carousel Slider Section -->
+    <div class="band">
+      <div class="wrap">
+        <section id="projects">
+          <!-- Section Header with Slider Navigation Controls -->
+          <div class="projects-head">
+            <h2>Projects</h2>
+            <div class="slider-controls">
+              <button class="slide-btn" id="proj-prev" type="button" aria-label="Previous projects" disabled>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+              </button>
+              <button class="slide-btn" id="proj-next" type="button" aria-label="Next projects">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Slider Track -->
+          <div class="slider-container">
+            <div class="slider-track" id="project-slider">
+              
+              <!-- Project 1 -->
+              <article class="card">
+                <div class="shot" role="img" aria-label="Screenshot placeholder for Iterate Prep">Screenshot</div>
+                <div class="card-body">
+                  <h3>Iterate Prep</h3>
+                  <p>An EdTech SaaS platform designed for structured exam preparation with practice question banks and progress tracking.</p>
+                  <div class="tags">React, Node.js, SQL</div>
+                  <a href="#projects">View project</a>
+                </div>
+              </article>
+
+              <!-- Project 2 -->
+              <article class="card">
+                <div class="shot" role="img" aria-label="Screenshot placeholder for Project Two">Screenshot</div>
+                <div class="card-body">
+                  <h3>Project Two</h3>
+                  <p>One or two sentences on what it does and what you built. Placeholder text.</p>
+                  <div class="tags">React, Express, MongoDB</div>
+                  <a href="#projects">View project</a>
+                </div>
+              </article>
+
+              <!-- Project 3 -->
+              <article class="card">
+                <div class="shot" role="img" aria-label="Screenshot placeholder for Project Three">Screenshot</div>
+                <div class="card-body">
+                  <h3>Project Three</h3>
+                  <p>One or two sentences on what it does and what you built. Placeholder text.</p>
+                  <div class="tags">Next.js, Tailwind, PostgreSQL</div>
+                  <a href="#projects">View project</a>
+                </div>
+              </article>
+
+              <!-- Project 4 -->
+              <article class="card">
+                <div class="shot" role="img" aria-label="Screenshot placeholder for Project Four">Screenshot</div>
+                <div class="card-body">
+                  <h3>Project Four</h3>
+                  <p>One or two sentences on what it does and what you built. Placeholder text.</p>
+                  <div class="tags">Python, FastAPI, Redis</div>
+                  <a href="#projects">View project</a>
+                </div>
+              </article>
+
+              <!-- Project 5 -->
+              <article class="card">
+                <div class="shot" role="img" aria-label="Screenshot placeholder for Project Five">Screenshot</div>
+                <div class="card-body">
+                  <h3>Project Five</h3>
+                  <p>One or two sentences on what it does and what you built. Placeholder text.</p>
+                  <div class="tags">TypeScript, GraphQL, Docker</div>
+                  <a href="#projects">View project</a>
+                </div>
+              </article>
+
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Certificates & Credentials Section (Minimalist Editorial List) -->
+    <div class="wrap">
+      <section id="certificates" class="certificates">
+        <div class="section-head">
+          <h2>Certifications</h2>
+          <p class="section-sub">Earned between university lectures, teaching shifts, and late-night coding sessions on the open web.</p>
+        </div>
+
+        <div class="cert-list">
+          <!-- Cert 1: JavaScript -->
+          <article class="cert-item">
+            <div class="cert-meta">
+              <span class="cert-issuer">freeCodeCamp</span>
+              <span class="cert-year">Feb 2026 · antizer17-jsv9</span>
+            </div>
+            <div class="cert-main">
+              <h3 class="cert-title">JavaScript Fundamentals</h3>
+              <div class="cert-tags">
+                <span>ES6+ Syntax</span>
+                <span>DOM & Events</span>
+                <span>Async / Promises</span>
+                <span>OOP & Functions</span>
+                <span>Web APIs</span>
+              </div>
+            </div>
+            <div class="cert-action">
+              <a href="https://www.freecodecamp.org/certification/antizer17/javascript-v9" class="cert-link" target="_blank" rel="noopener noreferrer">
+                <span>Verify</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- Cert 2: Responsive Web Design -->
+          <article class="cert-item">
+            <div class="cert-meta">
+              <span class="cert-issuer">freeCodeCamp</span>
+              <span class="cert-year">Nov 2025 · antizer17-rwdv9</span>
+            </div>
+            <div class="cert-main">
+              <h3 class="cert-title">Responsive Web Design</h3>
+              <div class="cert-tags">
+                <span>HTML5</span>
+                <span>CSS3</span>
+                <span>Flexbox</span>
+                <span>CSS Grid</span>
+                <span>Responsive Design</span>
+              </div>
+            </div>
+            <div class="cert-action">
+              <a href="https://www.freecodecamp.org/certification/antizer17/responsive-web-design-v9" class="cert-link" target="_blank" rel="noopener noreferrer">
+                <span>Verify</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M7 17l9.2-9.2M17 17V7H7"/>
+                </svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="wrap">
+      <section id="contact" class="contact">
+        <h2>Contact</h2>
+        <p>Open to full-time full-stack roles. The fastest way to reach me is email.</p>
+        <div class="actions">
+          <button class="btn open-email-btn" type="button">Email me</button>
+          <a class="btn ghost" href="#contact">GitHub</a>
+          <a class="btn ghost" href="#contact">LinkedIn</a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- =======================================================================
+       FOOTER
+       ======================================================================= -->
+  <div class="wrap">
+    <footer>© 2026 Sameer. Dhaka, Bangladesh.</footer>
+  </div>
+
+  <!-- =======================================================================
+       EMAIL PULL-UP DRAWER (MODAL BOTTOM SHEET)
+       ======================================================================= -->
+  <div class="email-drawer" id="email-drawer" aria-hidden="true" role="dialog" aria-labelledby="drawer-title">
+    <div class="drawer-backdrop" id="drawer-backdrop"></div>
+    <div class="drawer-panel">
+      <div class="drawer-header">
+        <div>
+          <h3 id="drawer-title">Send me a message</h3>
+          <p>Type your message below and it will be sent directly to my inbox.</p>
+        </div>
+        <button class="drawer-close" id="drawer-close" type="button" aria-label="Close dialog">&times;</button>
+      </div>
+
+      <form class="drawer-form" id="contact-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="user-name">Your Name</label>
+            <input type="text" id="user-name" name="name" required placeholder="John Doe">
+          </div>
+          <div class="form-group">
+            <label for="user-email">Your Email</label>
+            <input type="email" id="user-email" name="email" required placeholder="john@example.com">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="user-subject">Subject</label>
+          <input type="text" id="user-subject" name="subject" required placeholder="Project inquiry / Full-stack role">
+        </div>
+
+        <div class="form-group">
+          <label for="user-message">Message</label>
+          <textarea id="user-message" name="message" rows="4" required placeholder="Hi Sameer, I came across your portfolio and would like to discuss..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn" id="send-btn">
+            <span>Send Message</span>
+          </button>
+          <span class="form-status" id="form-status"></span>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,876 @@
+/* ==========================================================================
+   PORTFOLIO STYLESHEET — Sameer
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DESIGN TOKENS & CSS VARIABLES (THEMING)
+   -------------------------------------------------------------------------- */
+:root {
+  color-scheme: dark;
+
+  /* Primary Palette (Dark Mode - Default) */
+  --bg: #121210;            /* Warm charcoal / deep espresso background */
+  --surface: #1A1C18;       /* Elevated cards / drawers */
+  --line: #2E3029;          /* Subtle structural borders */
+  --accent: #8A9A5B;        /* Sage / moss green accent */
+  --badge: #E0A96D;         /* Warm honey / amber for tech badges */
+  --text: #E6DEC8;          /* Warm cream / parchment typography */
+  --muted: #9C998E;         /* Secondary muted text */
+  --btn: #E6DEC8;           /* Primary button background */
+  --btn-text: #121210;      /* Primary button text */
+
+  /* Inverted band section (Projects) */
+  --band-bg: var(--surface);
+  --band-card: var(--bg);
+  --band-line: var(--line);
+  --band-text: var(--text);
+  --band-muted: var(--muted);
+  --band-accent: var(--accent);
+  --band-badge: #E0A96D;
+
+  /* Typography Stacks (Tech Engineer Scheme) */
+  --display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+  --serif: var(--display); /* Alias for headings */
+  --sans: "Inter", system-ui, -apple-system, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* Light Theme Overrides */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --bg: #EFE9DA;            /* Soft warm parchment */
+  --surface: #F7F3E8;       /* Clean ivory surface */
+  --line: #D6CEB8;          /* Warm stone border */
+  --accent: #5F6B3A;        /* Deep olive accent */
+  --badge: #9A622A;         /* Rich amber for tech badges */
+  --text: #2A3022;          /* Forest charcoal typography */
+  --muted: #686855;         /* Muted olive gray */
+  --btn: #2A3022;
+  --btn-text: #EFE9DA;
+
+  /* Projects band remains a contrast block in light mode */
+  --band-bg: #262D20;
+  --band-card: #2F3828;
+  --band-line: #3E4833;
+  --band-text: #EFE9DA;
+  --band-muted: #B3AE98;
+  --band-accent: #B9C48A;
+  --band-badge: #E5B888;
+}
+
+/* --------------------------------------------------------------------------
+   2. RESET & BASE STYLES
+   -------------------------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-padding-top: env(safe-area-inset-top, 0px);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  transition: background-color 0.35s ease, color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   3. LAYOUT & CONTAINERS
+   -------------------------------------------------------------------------- */
+.wrap {
+  max-width: 68rem; /* 1088px max page content width */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   4. NAVIGATION & THEME TOGGLE
+   -------------------------------------------------------------------------- */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+}
+
+nav .brand {
+  font-family: var(--display);
+  font-size: 1.25rem;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.75rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+nav ul a:hover {
+  color: var(--text);
+}
+
+.mode {
+  width: 2.4rem;
+  height: 2.4rem;
+  flex: none;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: transparent;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s ease;
+}
+
+.mode:hover {
+  border-color: var(--accent);
+}
+
+.mode i {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 1.5px solid var(--text);
+  background: linear-gradient(90deg, var(--text) 50%, transparent 50%);
+}
+
+/* --------------------------------------------------------------------------
+   5. HERO SECTION & PORTRAIT
+   -------------------------------------------------------------------------- */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 3rem;
+  align-items: center;
+  min-height: min(38rem, calc(100svh - 6rem));
+  padding: 3rem 0;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(2.4rem, 4.5vw, 4rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin: 0 0 1.5rem;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 32rem;
+  margin: 0 0 2rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Common Button Styles */
+.btn {
+  display: inline-block;
+  padding: 0.8rem 1.5rem;
+  border-radius: 999px;
+  background-color: var(--btn);
+  color: var(--btn-text);
+  text-decoration: none;
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+.btn:hover {
+  opacity: 0.88;
+}
+
+.btn.ghost {
+  background-color: transparent;
+  color: var(--text);
+  border: 1px solid var(--line);
+}
+
+.btn.ghost:hover {
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+/* Portrait Card */
+.photo {
+  position: relative;
+  width: 100%;
+  max-width: 22rem;
+  aspect-ratio: 3 / 4;
+  margin-left: auto;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background-color: var(--surface);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.22);
+}
+
+.photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* --------------------------------------------------------------------------
+   6. SECTION COMMONS
+   -------------------------------------------------------------------------- */
+section {
+  padding: 4.5rem 0;
+  border-top: 1px solid var(--line);
+}
+
+h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.5vw, 2.3rem);
+  letter-spacing: -0.02em;
+  margin: 0 0 2rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. ABOUT SECTION & TOOLS MATRIX
+   -------------------------------------------------------------------------- */
+.about {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+}
+
+.about p {
+  margin: 0 0 1rem;
+  max-width: 36rem;
+}
+
+.about .stack {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Tech Badges / Pills */
+.about .stack span {
+  display: inline-block;
+  margin: 0 0.4rem 0.4rem 0;
+  padding: 0.25rem 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--badge);
+  font-family: var(--mono, var(--sans));
+  font-size: 0.9rem;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.about .stack span:hover {
+  border-color: var(--badge);
+  background-color: var(--surface);
+}
+
+/* Tools & Technologies Subsection */
+.tools-section {
+  margin-top: 2rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--line);
+}
+
+.tools-section h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem;
+  color: var(--text);
+}
+
+.tools-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.tool-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tool-cat-title {
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   8. PROJECTS SECTION & CAROUSEL SLIDER
+   -------------------------------------------------------------------------- */
+.band {
+  background-color: var(--band-bg);
+  color: var(--band-text);
+  transition: background-color 0.35s ease, color 0.35s ease;
+}
+
+.band section {
+  border-top: 0;
+}
+
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.projects-head h2 {
+  margin: 0;
+}
+
+/* Slider Arrow Buttons */
+.slider-controls {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.slide-btn {
+  width: 2.6rem;
+  height: 2.6rem;
+  border-radius: 50%;
+  border: 1px solid var(--band-line);
+  background-color: var(--band-card);
+  color: var(--band-text);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s ease, background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.slide-btn:hover:not(:disabled) {
+  border-color: var(--band-accent);
+  background-color: var(--band-line);
+}
+
+.slide-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+/* Slider Track (CSS Scroll Snap) */
+.slider-container {
+  position: relative;
+}
+
+.slider-track {
+  display: flex;
+  gap: 1.25rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 1rem;
+  margin-bottom: -1rem;
+}
+
+.slider-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* Project Cards */
+
+#iterate{
+  object-fit: contain;
+  width:100%;
+}
+
+
+
+.slider-track .card {
+  flex: 0 0 calc((100% - 2.5rem) / 3); /* 3 cards visible on desktop */
+  min-width: 17.5rem;
+  scroll-snap-align: start;
+}
+
+.card {
+  background-color: var(--band-card);
+  border: 1px solid var(--band-line);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--band-accent);
+}
+
+.shot {
+  aspect-ratio: 16 / 10;
+  background-color: var(--band-line);
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  color: var(--band-muted);
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.card-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  flex: 1;
+}
+
+.card h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.card p {
+  margin: 0;
+  color: var(--band-muted);
+  font-size: 0.98rem;
+  flex: 1;
+}
+
+.card .tags {
+  font-size: 0.88rem;
+  color: var(--band-badge);
+  font-family: var(--mono, var(--sans));
+}
+
+.card a {
+  font-size: 0.95rem;
+  color: var(--band-text);
+  text-decoration-color: var(--band-accent);
+  text-underline-offset: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   9. CERTIFICATES & CREDENTIALS SECTION (EDITORIAL LIST)
+   -------------------------------------------------------------------------- */
+.certificates .section-head {
+  margin-bottom: 2rem;
+}
+
+.certificates .section-head h2 {
+  margin: 0 0 0.5rem;
+}
+
+.section-sub {
+  color: var(--muted);
+  margin: 0;
+  max-width: 32rem;
+  font-size: 0.98rem;
+}
+
+.cert-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.cert-item {
+  display: grid;
+  grid-template-columns: 12rem 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+  transition: border-color 0.2s ease;
+}
+
+.cert-item:hover {
+  border-bottom-color: var(--badge);
+}
+
+.cert-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.cert-issuer {
+  font-weight: 500;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.cert-year {
+  font-family: var(--mono);
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.cert-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.cert-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.125rem;
+  color: var(--text);
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+.cert-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.cert-tags span {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--badge);
+}
+
+.cert-tags span:not(:last-child)::after {
+  content: "·";
+  margin-left: 0.35rem;
+  color: var(--muted);
+}
+
+.cert-action {
+  display: flex;
+  align-items: center;
+}
+
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.4rem 0.85rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cert-link:hover {
+  color: var(--text);
+  border-color: var(--badge);
+  background-color: var(--surface);
+}
+
+.cert-link svg {
+  transition: transform 0.2s ease;
+}
+
+.cert-link:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* --------------------------------------------------------------------------
+   10. CONTACT SECTION & FOOTER
+   -------------------------------------------------------------------------- */
+.contact p {
+  color: var(--muted);
+  max-width: 30rem;
+  margin: 0 0 1.75rem;
+}
+
+footer {
+  padding: 2.5rem 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--line);
+}
+
+/* --------------------------------------------------------------------------
+   10. PULL-UP EMAIL DRAWER (BOTTOM SHEET)
+   -------------------------------------------------------------------------- */
+.email-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.3s ease;
+}
+
+.email-drawer.open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.email-drawer.open .drawer-backdrop {
+  opacity: 1;
+}
+
+.drawer-panel {
+  position: relative;
+  width: 100%;
+  max-width: 38rem;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-bottom: none;
+  border-radius: 1.5rem 1.5rem 0 0;
+  padding: 2.2rem 2.2rem 2.5rem;
+  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  color: var(--text);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.email-drawer.open .drawer-panel {
+  transform: translateY(0);
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.drawer-header h3 {
+  font-family: var(--display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 0.3rem;
+}
+
+.drawer-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.drawer-close {
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  width: 2.2rem;
+  height: 2.2rem;
+  color: var(--text);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.drawer-close:hover {
+  border-color: var(--accent);
+}
+
+.drawer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  font-size: 0.85rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--badge);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.form-status {
+  font-size: 0.9rem;
+  color: var(--badge);
+  font-weight: 500;
+}
+
+/* --------------------------------------------------------------------------
+   11. MEDIA QUERIES & RESPONSIVENESS
+   -------------------------------------------------------------------------- */
+@media (max-width: 960px) {
+  .slider-track .card {
+    flex: 0 0 calc((100% - 1.25rem) / 2); /* 2 cards visible on tablet */
+    min-width: 16rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .hero,
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .hero {
+    padding: 2rem 0;
+    min-height: 0;
+  }
+
+  .hero-text {
+    padding: 0;
+  }
+
+  .photo {
+    aspect-ratio: 3 / 4;
+    max-width: 18rem;
+    margin: 0 auto;
+  }
+
+  nav ul {
+    gap: 1.1rem;
+  }
+
+  .cert-item {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    padding: 1.25rem 0;
+  }
+
+  .cert-meta {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .cert-action {
+    margin-top: 0.35rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .slider-track .card {
+    flex: 0 0 85%; /* 1 card + peek of next card on mobile */
+    min-width: 15rem;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .drawer-panel {
+    padding: 1.5rem 1.25rem 2rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   12. ACCESSIBILITY PREFERENCES
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
