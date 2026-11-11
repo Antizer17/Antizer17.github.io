@@ -20,15 +20,16 @@ function initThemeToggle() {
   if (!modeBtn) return;
 
   function updateAriaLabel() {
-    const isLight = root.getAttribute('data-theme') === 'light';
+    const currentTheme = root.getAttribute('data-theme') || 'light';
+    const isLight = currentTheme === 'light';
     modeBtn.setAttribute('aria-label', isLight ? 'Switch to dark mode' : 'Switch to light mode');
   }
 
   updateAriaLabel();
 
   modeBtn.addEventListener('click', () => {
-    const isCurrentlyLight = root.getAttribute('data-theme') === 'light';
-    const nextTheme = isCurrentlyLight ? 'dark' : 'light';
+    const currentTheme = root.getAttribute('data-theme') || 'light';
+    const nextTheme = currentTheme === 'light' ? 'dark' : 'light';
 
     root.setAttribute('data-theme', nextTheme);
     updateAriaLabel();

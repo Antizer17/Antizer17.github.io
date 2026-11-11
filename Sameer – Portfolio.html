@@ -20,12 +20,10 @@
       try {
         savedTheme = localStorage.getItem('theme');
       } catch (e) {}
-      if (!savedTheme && window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches) {
+      if (!savedTheme) {
         savedTheme = 'light';
       }
-      if (savedTheme) {
-        document.documentElement.setAttribute('data-theme', savedTheme);
-      }
+      document.documentElement.setAttribute('data-theme', savedTheme);
     })();
   </script>
 
@@ -42,12 +40,12 @@
     <nav>
       <a class="brand" href="#top">Sameer</a>
       <ul>
-        <li><a href="#about">About</a></li>
+        <li class="nav-about"><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#certificates">Certificates</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
-      <button class="mode" id="mode" type="button" aria-label="Switch to light mode">
+      <button class="mode" id="mode" type="button" aria-label="Switch to dark mode">
         <i></i>
       </button>
     </nav>

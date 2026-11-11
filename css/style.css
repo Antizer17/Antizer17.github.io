@@ -6,27 +6,27 @@
    1. DESIGN TOKENS & CSS VARIABLES (THEMING)
    -------------------------------------------------------------------------- */
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
-  /* Primary Palette (Dark Mode - Default) */
-  --bg: #121210;            /* Warm charcoal / deep espresso background */
-  --surface: #1A1C18;       /* Elevated cards / drawers */
-  --line: #2E3029;          /* Subtle structural borders */
-  --accent: #8A9A5B;        /* Sage / moss green accent */
-  --badge: #E0A96D;         /* Warm honey / amber for tech badges */
-  --text: #E6DEC8;          /* Warm cream / parchment typography */
-  --muted: #9C998E;         /* Secondary muted text */
-  --btn: #E6DEC8;           /* Primary button background */
-  --btn-text: #121210;      /* Primary button text */
+  /* Primary Palette (Light Beige Mode - Default) */
+  --bg: #EFE9DA;            /* Soft warm parchment / beige background */
+  --surface: #F7F3E8;       /* Clean ivory surface */
+  --line: #D6CEB8;          /* Warm stone border */
+  --accent: #5F6B3A;        /* Deep olive accent */
+  --badge: #9A622A;         /* Rich amber for tech badges */
+  --text: #2A3022;          /* Forest charcoal typography */
+  --muted: #686855;         /* Muted olive gray */
+  --btn: #2A3022;           /* Primary button background */
+  --btn-text: #EFE9DA;      /* Primary button text */
 
   /* Inverted band section (Projects) */
-  --band-bg: var(--surface);
-  --band-card: var(--bg);
-  --band-line: var(--line);
-  --band-text: var(--text);
-  --band-muted: var(--muted);
-  --band-accent: var(--accent);
-  --band-badge: #E0A96D;
+  --band-bg: #262D20;
+  --band-card: #2F3828;
+  --band-line: #3E4833;
+  --band-text: #EFE9DA;
+  --band-muted: #B3AE98;
+  --band-accent: #B9C48A;
+  --band-badge: #E5B888;
 
   /* Typography Stacks (Tech Engineer Scheme) */
   --display: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
@@ -39,21 +39,20 @@
   padding-bottom: env(safe-area-inset-bottom, 0px);
 }
 
-/* Light Theme Overrides */
+/* Explicit Light Theme (identical to default) */
 :root[data-theme="light"] {
   color-scheme: light;
 
-  --bg: #EFE9DA;            /* Soft warm parchment */
-  --surface: #F7F3E8;       /* Clean ivory surface */
-  --line: #D6CEB8;          /* Warm stone border */
-  --accent: #5F6B3A;        /* Deep olive accent */
-  --badge: #9A622A;         /* Rich amber for tech badges */
-  --text: #2A3022;          /* Forest charcoal typography */
-  --muted: #686855;         /* Muted olive gray */
+  --bg: #EFE9DA;
+  --surface: #F7F3E8;
+  --line: #D6CEB8;
+  --accent: #5F6B3A;
+  --badge: #9A622A;
+  --text: #2A3022;
+  --muted: #686855;
   --btn: #2A3022;
   --btn-text: #EFE9DA;
 
-  /* Projects band remains a contrast block in light mode */
   --band-bg: #262D20;
   --band-card: #2F3828;
   --band-line: #3E4833;
@@ -61,6 +60,29 @@
   --band-muted: #B3AE98;
   --band-accent: #B9C48A;
   --band-badge: #E5B888;
+}
+
+/* Dark Theme Overrides */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+
+  --bg: #121210;            /* Warm charcoal / deep espresso background */
+  --surface: #1A1C18;       /* Elevated cards / drawers */
+  --line: #2E3029;          /* Subtle structural borders */
+  --accent: #8A9A5B;        /* Sage / moss green accent */
+  --badge: #E0A96D;         /* Warm honey / amber for tech badges */
+  --text: #E6DEC8;          /* Warm cream / parchment typography */
+  --muted: #9C998E;         /* Secondary muted text */
+  --btn: #E6DEC8;           /* Primary button background */
+  --btn-text: #121210;      /* Primary button text */
+
+  --band-bg: var(--surface);
+  --band-card: var(--bg);
+  --band-line: var(--line);
+  --band-text: var(--text);
+  --band-muted: var(--muted);
+  --band-accent: var(--accent);
+  --band-badge: #E0A96D;
 }
 
 /* --------------------------------------------------------------------------
@@ -116,6 +138,7 @@ nav {
   align-items: center;
   gap: 1rem;
   padding: 1.5rem 0;
+  flex-wrap: nowrap;
 }
 
 nav .brand {
@@ -124,6 +147,7 @@ nav .brand {
   text-decoration: none;
   font-weight: 600;
   letter-spacing: -0.02em;
+  flex-shrink: 0;
 }
 
 nav ul {
@@ -132,6 +156,8 @@ nav ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 nav ul a {
@@ -849,6 +875,33 @@ footer {
 }
 
 @media (max-width: 640px) {
+  /* Remove About section from nav on mobile so items & toggle fit seamlessly */
+  .nav-about {
+    display: none;
+  }
+
+  nav {
+    gap: 0.5rem;
+    padding: 1.15rem 0;
+  }
+
+  nav .brand {
+    font-size: 1.15rem;
+  }
+
+  nav ul {
+    gap: 0.85rem;
+  }
+
+  nav ul a {
+    font-size: 0.88rem;
+  }
+
+  .mode {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
   .slider-track .card {
     flex: 0 0 85%; /* 1 card + peek of next card on mobile */
     min-width: 15rem;
@@ -860,6 +913,29 @@ footer {
 
   .drawer-panel {
     padding: 1.5rem 1.25rem 2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  nav {
+    gap: 0.35rem;
+  }
+
+  nav ul {
+    gap: 0.65rem;
+  }
+
+  nav ul a {
+    font-size: 0.82rem;
+  }
+
+  nav .brand {
+    font-size: 1.05rem;
+  }
+
+  .mode {
+    width: 2rem;
+    height: 2rem;
   }
 }
 
