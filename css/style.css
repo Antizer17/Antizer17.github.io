@@ -531,11 +531,25 @@ h2 {
   font-family: var(--mono, var(--sans));
 }
 
+.card-links {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-top: auto;
+  padding-top: 0.25rem;
+}
+
 .card a {
   font-size: 0.95rem;
   color: var(--band-text);
+  text-decoration: underline;
   text-decoration-color: var(--band-accent);
   text-underline-offset: 4px;
+  transition: color 0.2s ease;
+}
+
+.card a:hover {
+  color: var(--band-accent);
 }
 
 /* --------------------------------------------------------------------------
